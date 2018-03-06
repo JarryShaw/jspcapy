@@ -24,8 +24,7 @@ def get_parser():
     parser = argparse.ArgumentParser(prog='jspcapy', description=(
         'PCAP file extractor and formatted exporter'
     ))
-    parser.add_argument('-v', '--version', action='version',
-                        version='{0}'.format(__version__))
+    parser.add_argument('-v', '--version', action='version', version=f'{__version__}')
     parser.add_argument('fin', metavar='input-file-name',
                         help=(
                             'The name of input pcap file. If ".pcap" omits, '
@@ -88,17 +87,17 @@ def main():
         fmt = None
 
     try:
-        ext = jspcap.Extractor(fin=args.fin, fout=args.fout, fmt=fmt,
+        ext = jspcap.Extractor(fin=args.fin, fout=args.fout, format=fmt,
                         auto=args.verbose, extension=args.auto_extension)
-    except jspcap.FormatError:
+    except jspcap.exceptions.FormatError:
         try:
-            ext = jspcap.Extractor(fin=args.fin, fout=args.fout, fmt=fmt,
+            ext = jspcap.Extractor(fin=args.fin, fout=args.fout, format=fmt,
                             auto=args.verbose, extension=args.auto_extension)
-        except jspcap.FileError as file_error:
+        except jspcap.exceptions.FileError as file_error:
             fin, fout, fmt = jspcap.Extractor.make_name(args.fin, args.fout, args.format, args.auto_extension)
             os.remove(fout)
             raise file_error(f"UnsupportedFile: Unsupported file '{fin}'")
-    except jspcap.FileError as file_error:
+    except jspcap.exceptions.FileError as file_error:
         fin, fout, fmt = jspcap.Extractor.make_name(args.fin, args.fout, args.format, args.auto_extension)
         os.remove(fout)
         raise file_error(f"UnsupportedFile: Unsupported file '{fin}'")
