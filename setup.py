@@ -13,7 +13,7 @@ with open('./README.rst', 'r', encoding='utf-8') as file:
 # set-up script for pip distribution
 setuptools.setup(
     name = 'jspcapy',
-    version = '0.1.5',
+    version = '0.2.0',
     author = 'Jarry Shaw',
     author_email = 'jarryshaw@icloud.com',
     url = 'https://github.com/JarryShaw/jspcapy',
@@ -26,10 +26,9 @@ setuptools.setup(
     py_modules = ['jspcapy'],
     entry_points = {
         'console_scripts': [
-            'jspcapy = src.jspcapy:main',
+            'jspcapy = jspcapy:main',
         ]
     },
-    packages = [],
     package_data = {
         '': [
             'LICENSE.txt',
