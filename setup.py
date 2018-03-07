@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-from distutils.core import setup
+import setuptools
 
 
 # README
@@ -11,9 +11,9 @@ with open('./README.rst', 'r') as file:
 
 
 # set-up script for pip distribution
-setup(
+setuptools.setup(
     name = 'jspcapy',
-    version = '0.2.3',
+    version = '0.2.4',
     author = 'Jarry Shaw',
     author_email = 'jarryshaw@icloud.com',
     url = 'https://github.com/JarryShaw/jspcapy',
