@@ -13,7 +13,7 @@ import sys
 
 
 # version number
-__version__ = '0.2.3'
+__version__ = '0.2.5'
 
 
 def get_parser():

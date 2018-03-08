@@ -1,30 +1,25 @@
 # jspcapy
 
-&nbsp;
+ > This program depends on [`jspcap`](https://github.com/JarryShaw/jspcap) and [`jsformat`](https://github.com/JarryShaw/jsformat).
 
- > This program is derived from `jspcap` and `jsformat`.
+&emsp; `jspcapy` is a **command line** pcap file analyser tool. It supports analysis on several networking protocol headers, such as `IP` (both version 4 and 6), `ICMP`, `TCP`, `UDP`, `SCTP`, et al and streaming output of `plist`, `json` and *tree-view* `text` file.
 
-&emsp; `jspcapy` is a **command line** pcap file analyser tool. It supports analysis on several networking protocol headers, such as `IP` (both version 4 and 6), `ICMP`, `TCP`, `UDP`, `SCTP`, et al and streaming output of `plist`, `json` and *tree-view* text file.
+&emsp; Notice that the whole project works on Python versions __since 3.6__.
 
- > &emsp; In the core of the `JSPCAP` project, it works with the support of `jspcap` and `jsformat`, which can both be found in three projects above and are maintained in the [`dev`](https://github.com/JarryShaw/jspcap/tree/master/dev/) folder.
-
-&emsp; Notice that the whole project is developed in `Python 3.6` and its compatibility hasn't been tested.
-
-&nbsp;
+---
 
 ## Installation
 
 &emsp; Simply run the following to install the latest from PyPI:
 
-```bash
+```shell
 $ pip install jspcapy
 ```
 
 &emsp; Or install from the git repository:
 
-```bash
-$ git clone https://github.com/JarryShaw/jspcap.git
-$ cd jspcap/jspcapy
+```shell
+$ git clone https://github.com/JarryShaw/jspcapy.git
 $ python setup.py install
 ```
 
@@ -34,7 +29,7 @@ $ python setup.py install
 
 &emsp; As it shows in the help manual, it is quite easy to use:
 
-```bash
+```shell
 $ jspcapy -h
 usage: jspcapy.py [-h] [-v] [-o file-name] [-f format] [-j] [-p] [-t] [-a]
                   [-V]
@@ -82,7 +77,7 @@ optional arguments:
 
  - export to a macOS Property List (`Xcode` has special support for this format)
 
- ```bash
+ ```shell
  $ jspcapy in -f plist -V
  🚨Loading file 'in.pcap'
   - Frame   1: Ethernet:IPv6:ICMPv6
@@ -96,7 +91,7 @@ optional arguments:
 
  - export to a json file (with no format specified)
 
- ```bash
+ ```shell
  $ jspcapy in -o out.json -V
  🚨Loading file 'in.pcap'
  - Frame   1: Ethernet:IPv6:ICMPv6
@@ -110,7 +105,7 @@ optional arguments:
 
  - export to a text tree view file (without extension autocorrect)
 
- ```bash
+ ```shell
  $ jspcapy in -o out -f tree -V
  🚨Loading file 'in.pcap'
  - Frame   1: Ethernet:IPv6:ICMPv6

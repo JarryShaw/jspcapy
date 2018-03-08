@@ -3,49 +3,45 @@
 jspcapy
 =======
 
-    This program is derived from ``jspcap`` and ``jsformat``.
+    This program depends on
+    ```jspcap`` <https://github.com/JarryShaw/jspcap>`__ and
+    ```jsformat`` <https://github.com/JarryShaw/jsformat>`__.
 
  ``jspcapy`` is a **command line** pcap file analyser tool. It supports
 analysis on several networking protocol headers, such as ``IP`` (both
 version 4 and 6), ``ICMP``, ``TCP``, ``UDP``, ``SCTP``, et al and
-streaming output of ``plist``, ``json`` and *tree-view* text file.
+streaming output of ``plist``, ``json`` and *tree-view* ``text`` file.
 
-     In the core of the ``JSPCAP`` project, it works with the support of
-    ``jspcap`` and ``jsformat``, which can both be found in three
-    projects above and are maintained in the
-    ```dev`` <https://github.com/JarryShaw/jspcap/tree/master/dev/>`__
-    folder.
+ Notice that the whole project works on Python versions **since 3.6**.
 
- Notice that the whole project is developed in ``Python 3.6`` and its
-compatibility hasn't been tested.
+--------------
 
-.. _header-n16:
+.. _header-n10:
 
 Installation
 ------------
 
  Simply run the following to install the latest from PyPI:
 
-.. code:: bash
+.. code:: shell
 
     $ pip install jspcapy
 
  Or install from the git repository:
 
-.. code:: bash
+.. code:: shell
 
-    $ git clone https://github.com/JarryShaw/jspcap.git
-    $ cd jspcap/jspcapy
+    $ git clone https://github.com/JarryShaw/jspcapy.git
     $ python setup.py install
 
-.. _header-n25:
+.. _header-n19:
 
 Usage
 -----
 
  As it shows in the help manual, it is quite easy to use:
 
-.. code:: bash
+.. code:: shell
 
     $ jspcapy -h
     usage: jspcapy.py [-h] [-v] [-o file-name] [-f format] [-j] [-p] [-t] [-a]
@@ -92,7 +88,7 @@ raise.
 extraction (as following examples). And ``auto-extension`` flag works
 for the output file, to indicate whether extensions should be appended.
 
-.. _header-n35:
+.. _header-n29:
 
 Samples
 -------
@@ -102,7 +98,7 @@ Samples
 -  export to a macOS Property List (``Xcode`` has special support for
    this format)
 
-.. code:: bash
+.. code:: shell
 
      $ jspcapy in -f plist -V
      🚨Loading file 'in.pcap'
@@ -116,7 +112,7 @@ Samples
 
 -  export to a json file (with no format specified)
 
-.. code:: bash
+.. code:: shell
 
      $ jspcapy in -o out.json -V
      🚨Loading file 'in.pcap'
@@ -130,7 +126,7 @@ Samples
 
 -  export to a text tree view file (without extension autocorrect)
 
-.. code:: bash
+.. code:: shell
 
      $ jspcapy in -o out -f tree -V
      🚨Loading file 'in.pcap'
