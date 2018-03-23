@@ -12,13 +12,13 @@
 
 &emsp; Simply run the following to install the latest from PyPI:
 
-```shell
+```
 $ pip install jspcapy
 ```
 
 &emsp; Or install from the git repository:
 
-```shell
+```
 $ git clone https://github.com/JarryShaw/jspcapy.git
 $ python setup.py install
 ```
@@ -29,11 +29,11 @@ $ python setup.py install
 
 &emsp; As it shows in the help manual, it is quite easy to use:
 
-```shell
+```
 $ jspcapy -h
-usage: jspcapy.py [-h] [-v] [-o file-name] [-f format] [-j] [-p] [-t] [-a]
-                  [-V]
-                  input-file-name
+usage: jspcapy [-h] [-V] [-o file-name] [-f format] [-j] [-p] [-t] [-a] [-F]
+               [-v]
+               input-file-name
 
 PCAP file extractor and formatted exporter
 
@@ -43,14 +43,14 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --version         show program's version number and exit
+  -V, --version         show program's version number and exit
   -o file-name, --output file-name
                         The name of input pcap file. If format extension
                         omits, it will be automatically appended.
   -f format, --format format
                         Print a extraction report in the specified output
                         format. Available are all formats supported by
-                        jsformat, e.g.: json, plist, tree, xml, html.
+                        jsformat, e.g.: json, plist, and tree.
   -j, --json            Display extraction report as json. This will yield
                         "raw" output that may be used by external tools. This
                         option overrides all other options.
@@ -62,10 +62,11 @@ optional arguments:
                         yield "raw" output that may be used by external tools.
                         This option overrides all other options.
   -a, --auto-extension  If output file extension omits, append automatically.
-  -V, --verbose         Show more information.
+  -F, --files           Split each frame into different files.
+  -v, --verbose         Show more information.
 ```
 
-&emsp; Under most circumstances, you should indicate the name of input pcap file (extension may omit) and at least, output format (`json`, `plist`, `tree`, `xml`, or `html`). Once format unspecified, the name of output file must have proper extension (`*.json`, `*.plist`, `*.txt`, `*.xml`, or `*.js`), otherwise `FormatError` will raise.
+&emsp; Under most circumstances, you should indicate the name of input pcap file (extension may omit) and at least, output format (`json`, `plist`, or `tree`). Once format unspecified, the name of output file must have proper extension (`*.json`, `*.plist`, or `*.txt`), otherwise `FormatError` will raise.
 
 &emsp; As for `verbose` mode, detailed information will print while extraction (as following examples). And `auto-extension` flag works for the output file, to indicate whether extensions should be appended.
 
@@ -77,8 +78,8 @@ optional arguments:
 
  - export to a macOS Property List (`Xcode` has special support for this format)
 
- ```shell
- $ jspcapy in -f plist -V
+ ```
+ $ jspcapy in -f plist --verbose
  🚨Loading file 'in.pcap'
   - Frame   1: Ethernet:IPv6:ICMPv6
   - Frame   2: Ethernet:IPv6:ICMPv6
@@ -91,8 +92,8 @@ optional arguments:
 
  - export to a json file (with no format specified)
 
- ```shell
- $ jspcapy in -o out.json -V
+ ```
+ $ jspcapy in -o out.json --verbose
  🚨Loading file 'in.pcap'
  - Frame   1: Ethernet:IPv6:ICMPv6
  - Frame   2: Ethernet:IPv6:ICMPv6
@@ -105,8 +106,8 @@ optional arguments:
 
  - export to a text tree view file (without extension autocorrect)
 
- ```shell
- $ jspcapy in -o out -f tree -V
+ ```
+ $ jspcapy in -o out -f tree --verbos
  🚨Loading file 'in.pcap'
  - Frame   1: Ethernet:IPv6:ICMPv6
  - Frame   2: Ethernet:IPv6:ICMPv6

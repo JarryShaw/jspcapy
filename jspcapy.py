@@ -13,7 +13,7 @@ import sys
 
 
 # version number
-__version__ = '0.2.5'
+__version__ = '0.3.0'
 
 
 def get_parser():
@@ -35,7 +35,7 @@ def get_parser():
                         dest='format', help=(
                             'Print a extraction report in the specified output '
                             'format. Available are all formats supported by '
-                            'jsformat, e.g.: json, plist, tree, xml.'
+                            'jsformat, e.g.: json, plist, and tree.'
                         ))
     parser.add_argument('-j', '--json', action='store_true', default=False,
                         help=(
@@ -60,6 +60,10 @@ def get_parser():
                         help=(
                             'If output file extension omits, append automatically.'
                         ))
+    parser.add_argument('-F', '--files', action='store_true', default=False,
+                        help=(
+                            'Split each frame into different files.'
+                        ))
     parser.add_argument('-v', '--verbose', action='store_false', default=True,
                         help=(
                             'Show more information.'
@@ -77,13 +81,17 @@ def main():
     elif args.tree:     fmt = 'tree'
     else:               fmt = None
 
-    extractor = jspcap.Extractor(fin=args.fin, fout=args.fout, format=fmt, auto=args.verbose, extension=args.auto_extension)
+    extractor = jspcap.Extractor(
+                    fin=args.fin, fout=args.fout, format=fmt,
+                    auto=args.verbose, files=args.files,
+                    extension=args.auto_extension
+                )
 
     if not args.verbose:
         print(f"🚨 Loading file '{extractor.input}'")
         for frame in extractor:
             print(f' - Frame {extractor.length:>3d}: {extractor.protocol}')
-        print(f"🍺 Report file stored in '{extractor.output}'")
+        print(f"🍺 Report file{'s' if args.files else ''} stored in '{extractor.output}'")
 
 
 if __name__ == '__main__':

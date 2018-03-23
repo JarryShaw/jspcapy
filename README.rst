@@ -7,12 +7,12 @@ jspcapy
     ```jspcap`` <https://github.com/JarryShaw/jspcap>`__ and
     ```jsformat`` <https://github.com/JarryShaw/jsformat>`__.
 
- ``jspcapy`` is a **command line** pcap file analyser tool. It supports
+``jspcapy`` is a **command line** pcap file analyser tool. It supports
 analysis on several networking protocol headers, such as ``IP`` (both
 version 4 and 6), ``ICMP``, ``TCP``, ``UDP``, ``SCTP``, et al and
 streaming output of ``plist``, ``json`` and *tree-view* ``text`` file.
 
- Notice that the whole project works on Python versions **since 3.6**.
+Notice that the whole project works on Python versions **since 3.6**.
 
 --------------
 
@@ -21,15 +21,15 @@ streaming output of ``plist``, ``json`` and *tree-view* ``text`` file.
 Installation
 ------------
 
- Simply run the following to install the latest from PyPI:
+Simply run the following to install the latest from PyPI:
 
-.. code:: shell
+.. code:: 
 
     $ pip install jspcapy
 
- Or install from the git repository:
+Or install from the git repository:
 
-.. code:: shell
+.. code:: 
 
     $ git clone https://github.com/JarryShaw/jspcapy.git
     $ python setup.py install
@@ -39,14 +39,14 @@ Installation
 Usage
 -----
 
- As it shows in the help manual, it is quite easy to use:
+As it shows in the help manual, it is quite easy to use:
 
-.. code:: shell
+.. code:: 
 
     $ jspcapy -h
-    usage: jspcapy.py [-h] [-v] [-o file-name] [-f format] [-j] [-p] [-t] [-a]
-                      [-V]
-                      input-file-name
+    usage: jspcapy [-h] [-V] [-o file-name] [-f format] [-j] [-p] [-t] [-a] [-F]
+                   [-v]
+                   input-file-name
 
     PCAP file extractor and formatted exporter
 
@@ -56,14 +56,14 @@ Usage
 
     optional arguments:
       -h, --help            show this help message and exit
-      -v, --version         show program's version number and exit
+      -V, --version         show program's version number and exit
       -o file-name, --output file-name
                             The name of input pcap file. If format extension
                             omits, it will be automatically appended.
       -f format, --format format
                             Print a extraction report in the specified output
                             format. Available are all formats supported by
-                            jsformat, e.g.: json, plist, tree, xml, html.
+                            jsformat, e.g.: json, plist, and tree.
       -j, --json            Display extraction report as json. This will yield
                             "raw" output that may be used by external tools. This
                             option overrides all other options.
@@ -75,16 +75,16 @@ Usage
                             yield "raw" output that may be used by external tools.
                             This option overrides all other options.
       -a, --auto-extension  If output file extension omits, append automatically.
-      -V, --verbose         Show more information.
+      -F, --files           Split each frame into different files.
+      -v, --verbose         Show more information.
 
- Under most circumstances, you should indicate the name of input pcap
+Under most circumstances, you should indicate the name of input pcap
 file (extension may omit) and at least, output format (``json``,
-``plist``, ``tree``, ``xml``, or ``html``). Once format unspecified, the
-name of output file must have proper extension (``*.json``, ``*.plist``,
-``*.txt``, ``*.xml``, or ``*.js``), otherwise ``FormatError`` will
-raise.
+``plist``, or ``tree``). Once format unspecified, the name of output
+file must have proper extension (``*.json``, ``*.plist``, or ``*.txt``),
+otherwise ``FormatError`` will raise.
 
- As for ``verbose`` mode, detailed information will print while
+As for ``verbose`` mode, detailed information will print while
 extraction (as following examples). And ``auto-extension`` flag works
 for the output file, to indicate whether extensions should be appended.
 
@@ -93,14 +93,14 @@ for the output file, to indicate whether extensions should be appended.
 Samples
 -------
 
- Here are some usage samples:
+Here are some usage samples:
 
 -  export to a macOS Property List (``Xcode`` has special support for
    this format)
 
-.. code:: shell
+.. code:: 
 
-     $ jspcapy in -f plist -V
+     $ jspcapy in -f plist --verbose
      🚨Loading file 'in.pcap'
       - Frame   1: Ethernet:IPv6:ICMPv6
       - Frame   2: Ethernet:IPv6:ICMPv6
@@ -112,9 +112,9 @@ Samples
 
 -  export to a json file (with no format specified)
 
-.. code:: shell
+.. code:: 
 
-     $ jspcapy in -o out.json -V
+     $ jspcapy in -o out.json --verbose
      🚨Loading file 'in.pcap'
      - Frame   1: Ethernet:IPv6:ICMPv6
      - Frame   2: Ethernet:IPv6:ICMPv6
@@ -126,9 +126,9 @@ Samples
 
 -  export to a text tree view file (without extension autocorrect)
 
-.. code:: shell
+.. code:: 
 
-     $ jspcapy in -o out -f tree -V
+     $ jspcapy in -o out -f tree --verbos
      🚨Loading file 'in.pcap'
      - Frame   1: Ethernet:IPv6:ICMPv6
      - Frame   2: Ethernet:IPv6:ICMPv6
