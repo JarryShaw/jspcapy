@@ -6,14 +6,18 @@ import setuptools
 
 
 # README
-with open('./README.rst', 'r') as file:
+with open('./README.md', 'r') as file:
     long_desc = file.read()
+
+
+# version string
+__version__ = '0.3.0.post1'
 
 
 # set-up script for pip distribution
 setuptools.setup(
     name = 'jspcapy',
-    version = '0.3.0',
+    version = __version__,
     author = 'Jarry Shaw',
     author_email = 'jarryshaw@icloud.com',
     url = 'https://github.com/JarryShaw/jspcapy',
@@ -21,6 +25,7 @@ setuptools.setup(
     keywords = 'computer-networking pcap-analyzer pcap-parser',
     description = 'A command line pcap file analyser tool.',
     long_description = long_desc,
+    long_description_content_type='text/markdown',
     python_requires = '>=3.6',
     install_requires = ['jspcap'],
     py_modules = ['jspcapy'],
