@@ -13,7 +13,7 @@ import sys
 
 
 # version number
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 
 
 def get_parser():
@@ -81,10 +81,10 @@ def main():
     elif args.tree:     fmt = 'tree'
     else:               fmt = None
 
-    extractor = jspcap.Extractor(
+    extractor = jspcap.extract(
                     fin=args.fin, fout=args.fout, format=fmt,
                     auto=args.verbose, files=args.files,
-                    extension=args.auto_extension
+                    store=False, extension=args.auto_extension,
                 )
 
     if not args.verbose:

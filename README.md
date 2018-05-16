@@ -1,5 +1,7 @@
 # jspcapy
 
+__NOTE: This repository has been officially deprecated and merged into [`jspcap`](https://github.com/JarryShaw/jspcap).__
+
  > This program depends on [`jspcap`](https://github.com/JarryShaw/jspcap) and [`jsformat`](https://github.com/JarryShaw/jsformat).
 
 &emsp; `jspcapy` is a **command line** pcap file analyser tool. It supports analysis on several networking protocol headers, such as `IP` (both version 4 and 6), `ICMP`, `TCP`, `UDP`, `SCTP`, et al and streaming output of `plist`, `json` and *tree-view* `text` file.
